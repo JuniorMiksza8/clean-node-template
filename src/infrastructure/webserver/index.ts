@@ -16,7 +16,7 @@ class Webserver {
   }
 
   register(router: Router) {
-    this.server.use(router)
+    this.server.use('/', router)
   }
 }
 
