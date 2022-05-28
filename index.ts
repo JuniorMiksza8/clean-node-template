@@ -1,8 +1,4 @@
-import Webserver from './src/infrastructure/webserver/server'
+import Server from './src/main/server'
 
-function start() {
-  const webserver = new Webserver()
-  webserver.start()
-}
-
-export default start()
+const server = new Server()
+server.start()
