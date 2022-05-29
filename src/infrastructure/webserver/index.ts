@@ -1,17 +1,12 @@
 import express, { Express, Router } from 'express'
-import { config } from 'dotenv'
-
-config()
-
-const { HTTP_SERVER_PORT } = process.env
 
 class Webserver {
   server: Express
 
-  start() {
+  start(port: number) {
     this.server = express()
-    this.server.listen(Number(HTTP_SERVER_PORT), () => {
-      console.log(`Webserver up and running on ${HTTP_SERVER_PORT}`)
+    this.server.listen(port, () => {
+      console.log(`Webserver up and running on ${port}`)
     })
   }
 
@@ -20,4 +15,4 @@ class Webserver {
   }
 }
 
-export default new Webserver()
+export default Webserver
