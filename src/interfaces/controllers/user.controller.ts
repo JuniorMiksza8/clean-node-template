@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
 import { BcryptHashService } from '../../adapters/BcryptHashService'
-import { HttpError } from '../../adapters/HttpError'
 import { CreateUserUseCase } from '../../application/useCases/CreateUserUseCase'
 import { FindUserUseCase } from '../../application/useCases/findUsersUseCase'
 import { User } from '../../domain/entities/User'

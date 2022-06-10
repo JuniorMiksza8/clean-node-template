@@ -18,7 +18,7 @@ export class PrismaUserRepository implements UserRepository {
     return connection.user.findUnique({ where: { id } })
   }
 
-  find(where?: Partial<User>, select?: UserSelect): Promise<User[] | any[]> {
+  find(where?: Partial<User>, select?: UserSelect): Promise<Partial<User>[]> {
     return connection.user.findMany({
       where,
       select: { ...defaultSelect, ...select },
