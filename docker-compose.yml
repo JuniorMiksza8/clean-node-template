@@ -1,0 +1,19 @@
+services:
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - 5432:5432
+
+  server:
+    image: ambientum/node:14
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/var/www/app
+    ports:
+      - '${HTTP_SERVER_PORT}:${HTTP_SERVER_PORT}'
+    command: bash -c "npm i && npm run dev"
