@@ -4,10 +4,11 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist"
   },
-  "include": ["index.ts", "src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["index.ts", "src/**/*"]
 }
