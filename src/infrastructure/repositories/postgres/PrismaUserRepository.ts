@@ -31,6 +31,21 @@ export class PrismaUserRepository implements UserRepository {
 
   async exists(data: Partial<User>) {
     const res = await connection.user.count({ where: { ...data } })
+
     return !!res
+  }
+
+  async deleteByID(id: string) {
+    const res = await connection.user.delete({ where: { id } })
+    return !!res
+  }
+
+  async update(data: Partial<User>): Promise<Partial<User>> {
+    const { id, ...rest } = data
+    return connection.user.update({
+      where: { id },
+      data: rest,
+      select: defaultSelect,
+    })
   }
 }

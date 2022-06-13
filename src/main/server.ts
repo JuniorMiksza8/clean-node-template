@@ -1,5 +1,5 @@
 import Webserver from '../infrastructure/webserver'
-import routes from './routes'
+import routes from './config/routes'
 import { config } from 'dotenv'
 
 config()

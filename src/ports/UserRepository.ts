@@ -16,4 +16,6 @@ export class UserRepository {
   find: (where?: Partial<User>, select?: UserSelect) => Promise<Partial<User>[]>
   save: (user: User) => Promise<Partial<User>>
   exists: (data: Partial<User>) => Promise<boolean>
+  deleteByID: (id: string) => Promise<boolean>
+  update: (data: Partial<User>) => Promise<Partial<User>>
 }
