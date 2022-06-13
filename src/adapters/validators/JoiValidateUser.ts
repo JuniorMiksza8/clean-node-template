@@ -1,5 +1,5 @@
 import Joi from 'joi'
-import { User } from '../../domain/entities/User'
+import { User } from '../../domain/user/User'
 import { ValidateUser } from '../../ports/ValidateUser'
 
 const UserSchema = Joi.object({

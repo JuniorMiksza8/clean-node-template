@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { BcryptHashService } from '../../../adapters/BcryptHashService'
 import { JoiValidateUser } from '../../../adapters/validators/JoiValidateUser'
-import { PrismaUserRepository } from '../../../infrastructure/repositories/postgres/PrismaUserRepository'
+import { PrismaUserRepository } from '../../../infrastructure/database/sql/repositorys/PrismaUserRepository'
 
 import { UserController } from '../../../interfaces/controllers/UserController'
 

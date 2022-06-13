@@ -1,4 +1,4 @@
-import { User } from '../domain/entities/User'
+import { User } from '../domain/user/User'
 
 export interface UserSelect {
   id?: boolean

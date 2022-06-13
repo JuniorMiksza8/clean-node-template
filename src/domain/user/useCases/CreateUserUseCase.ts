@@ -1,8 +1,8 @@
-import { HttpError } from '../../adapters/HttpError'
-import { User } from '../../domain/entities/User'
-import { HashService } from '../../ports/HashService'
-import { UserRepository } from '../../ports/UserRepository'
-import { ValidateUser } from '../../ports/ValidateUser'
+import { HttpError } from '../../../adapters/HttpError'
+import { HashService } from '../../../ports/HashService'
+import { UserRepository } from '../../../ports/UserRepository'
+import { ValidateUser } from '../../../ports/ValidateUser'
+import { User } from '../User'
 
 export class CreateUserUseCase {
   userRepository: UserRepository

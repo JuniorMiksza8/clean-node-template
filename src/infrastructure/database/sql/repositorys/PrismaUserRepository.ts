@@ -1,6 +1,6 @@
-import { User } from '../../../domain/entities/User'
-import { UserRepository, UserSelect } from '../../../ports/UserRepository'
-import connection from './connection'
+import { User } from '../../../../domain/user/User'
+import { UserSelect, UserRepository } from '../../../../ports/UserRepository'
+import connection from '../connection'
 
 const defaultSelect: UserSelect = {
   createdAt: true,
