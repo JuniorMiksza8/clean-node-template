@@ -6,8 +6,8 @@ import { FindUserUseCase } from '../../domain/user/useCases/FindUsersUseCase'
 import { UpdateUserUseCase } from '../../domain/user/useCases/UpdateUserUseCase'
 
 import { HashService } from '../../ports/HashService'
-import { UserRepository } from '../../ports/UserRepository'
-import { ValidateUser } from '../../ports/ValidateUser'
+import { UserRepository } from '../../domain/user/ports/UserRepository'
+import { ValidateUser } from '../../domain/user/ports/ValidateUser'
 
 export class UserController {
   userRepository: UserRepository

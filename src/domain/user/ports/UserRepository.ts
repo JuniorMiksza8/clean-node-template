@@ -1,4 +1,4 @@
-import { User } from '../domain/user/User'
+import { User } from '../User'
 
 export interface UserSelect {
   id?: boolean
@@ -11,10 +11,18 @@ export interface UserSelect {
   updatedAt?: boolean
 }
 
+export interface CreateUserData {
+  name: string
+  email: string
+  password: string
+  salt: string
+  status: boolean
+}
+
 export class UserRepository {
-  findByID: (id: string) => Promise<Partial<User>>
+  findByID: (id: string) => Promise<Partial<User> | null>
   find: (where?: Partial<User>, select?: UserSelect) => Promise<Partial<User>[]>
-  save: (user: User) => Promise<Partial<User>>
+  save: (user: CreateUserData) => Promise<Partial<User>>
   exists: (data: Partial<User>) => Promise<boolean>
   deleteByID: (id: string) => Promise<boolean>
   update: (data: Partial<User>) => Promise<Partial<User>>

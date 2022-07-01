@@ -1,8 +1,5 @@
 import Webserver from '../infrastructure/webserver'
 import routes from './config/routes'
-import { config } from 'dotenv'
-
-config()
 
 export default class Server {
   webserver: Webserver
@@ -17,8 +14,7 @@ export default class Server {
     })
   }
 
-  start() {
-    const { HTTP_SERVER_PORT } = process.env
-    this.webserver.start(Number(HTTP_SERVER_PORT || 3000))
+  start(port: number) {
+    this.webserver.start(port)
   }
 }

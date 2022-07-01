@@ -1,4 +1,4 @@
-import { UserRepository } from '../../../ports/UserRepository'
+import { UserRepository } from '../ports/UserRepository'
 import { User } from '../User'
 
 export class FindUserUseCase {

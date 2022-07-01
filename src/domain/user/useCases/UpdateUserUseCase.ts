@@ -1,7 +1,7 @@
 import { HttpError } from '../../../adapters/HttpError'
 import { HashService } from '../../../ports/HashService'
-import { UserRepository } from '../../../ports/UserRepository'
-import { ValidateUser } from '../../../ports/ValidateUser'
+import { UserRepository } from '../ports/UserRepository'
+import { ValidateUser } from '../ports/ValidateUser'
 import { User } from '../User'
 
 export class UpdateUserUseCase {
@@ -20,6 +20,8 @@ export class UpdateUserUseCase {
   }
 
   async handle(data: Partial<User>): Promise<Partial<User>> {
+    if (!data.id) throw new HttpError('id not provided', 400)
+
     const user = await this.userRepository.findByID(data.id)
 
     if (!user) throw new HttpError('user not found', 404)

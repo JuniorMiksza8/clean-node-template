@@ -1,19 +1,22 @@
 services:
   database:
     image: postgres
+    container_name: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+      POSTGRES_DATRABASE: database
     ports:
       - 5432:5432
 
   server:
-    image: ambientum/node:14
-    environment:
-      - NODE_ENV=production
-    volumes:
-      - .:/var/www/app
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    depends_on:
+      - database
     ports:
       - '${HTTP_SERVER_PORT}:${HTTP_SERVER_PORT}'
-    command: bash -c "npm i && npm run dev"

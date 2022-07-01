@@ -1,4 +1,4 @@
-import { User } from '../domain/user/User'
+import { User } from '../User'
 
 export class ValidateUser {
   validate: (data: Partial<User>) => { ok: boolean; error: string }

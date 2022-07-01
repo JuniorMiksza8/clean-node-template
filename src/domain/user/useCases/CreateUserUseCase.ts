@@ -1,7 +1,7 @@
 import { HttpError } from '../../../adapters/HttpError'
 import { HashService } from '../../../ports/HashService'
-import { UserRepository } from '../../../ports/UserRepository'
-import { ValidateUser } from '../../../ports/ValidateUser'
+import { CreateUserData, UserRepository } from '../ports/UserRepository'
+import { ValidateUser } from '../ports/ValidateUser'
 import { User } from '../User'
 
 export class CreateUserUseCase {
@@ -19,7 +19,7 @@ export class CreateUserUseCase {
     this.validateUser = validateUser
   }
 
-  async handle(data: User): Promise<Partial<User> | HttpError> {
+  async handle(data: CreateUserData): Promise<Partial<User> | HttpError> {
     const isValid = this.validateUser.validate(data)
 
     if (!isValid.ok) throw new HttpError(isValid.error, 400)

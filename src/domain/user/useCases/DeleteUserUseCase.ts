@@ -1,5 +1,5 @@
 import { HttpError } from '../../../adapters/HttpError'
-import { UserRepository } from '../../../ports/UserRepository'
+import { UserRepository } from '../ports/UserRepository'
 
 export class DeleteUserUseCase {
   userRepository: UserRepository

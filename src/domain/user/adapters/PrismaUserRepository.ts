@@ -1,6 +1,11 @@
-import { User } from '../../../../domain/user/User'
-import { UserSelect, UserRepository } from '../../../../ports/UserRepository'
-import connection from '../connection'
+import { User } from '../User'
+import {
+  UserSelect,
+  UserRepository,
+  CreateUserData,
+} from '../ports/UserRepository'
+
+import connection from '../../../infrastructure/database/sql/connection'
 
 const defaultSelect: UserSelect = {
   createdAt: true,
@@ -14,7 +19,7 @@ const defaultSelect: UserSelect = {
 }
 
 export class PrismaUserRepository implements UserRepository {
-  findByID(id: string): Promise<User> {
+  findByID(id: string): Promise<Partial<User> | null> {
     return connection.user.findUnique({ where: { id } })
   }
 
@@ -25,14 +30,14 @@ export class PrismaUserRepository implements UserRepository {
     })
   }
 
-  save(data: User): Promise<User | Partial<User>> {
+  save(data: CreateUserData): Promise<Partial<User>> {
     return connection.user.create({ data, select: defaultSelect })
   }
 
   async exists(data: Partial<User>) {
     const res = await connection.user.count({ where: { ...data } })
 
-    return !!res
+    return res > 0
   }
 
   async deleteByID(id: string) {

@@ -1,6 +1,6 @@
 import Joi from 'joi'
-import { User } from '../../domain/user/User'
-import { ValidateUser } from '../../ports/ValidateUser'
+import { User } from '../User'
+import { ValidateUser } from '../ports/ValidateUser'
 
 const UserSchema = Joi.object({
   id: Joi.string(),
@@ -14,12 +14,12 @@ const UserSchema = Joi.object({
 })
 
 export class JoiValidateUser implements ValidateUser {
-  validate(data: User) {
+  validate(data: Partial<User>) {
     const res = UserSchema.validate(data)
 
     return {
       ok: !res.error,
-      error: res.error?.message,
+      error: res.error?.message || '',
     }
   }
 }
