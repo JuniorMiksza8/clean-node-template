@@ -1,5 +1,6 @@
 import express, { Express, Router } from 'express'
 import cors from 'cors'
+import chalk from 'chalk'
 
 class Webserver {
   server: Express = express()
@@ -8,7 +9,9 @@ class Webserver {
     this.server.use(express.json())
     this.server.use(cors())
     this.server.listen(port, () => {
-      console.log(`Webserver up and running on ${port}`)
+      console.log(
+        chalk.magenta('[server] ') + chalk.green(`up and running on :${port}`)
+      )
     })
   }
 
