@@ -1,29 +1,22 @@
-import Webserver from '../infrastructure/webserver'
-import routes from './config/routes'
 import * as Sentry from '@sentry/node'
 import * as Tracing from '@sentry/tracing'
+import { Express } from 'express'
 
-export default class Server {
-  webserver: Webserver
+export class SentryPlugin {
+  server: Express
 
-  constructor(webserver: Webserver = new Webserver()) {
-    this.webserver = webserver
+  constructor(server: Express) {
+    this.server = server
   }
 
-  setupRoutes() {
-    routes.map((value) => {
-      this.webserver.register(value)
-    })
-  }
-
-  setupSentry(dsn: string) {
+  init(dsn: string) {
     Sentry.init({
       dsn,
       integrations: [
         // enable HTTP calls tracing
         new Sentry.Integrations.Http({ tracing: true }),
         // enable Express.js middleware tracing
-        new Tracing.Integrations.Express({ app: this.webserver.server }),
+        new Tracing.Integrations.Express({ app: this.server }),
       ],
 
       // Set tracesSampleRate to 1.0 to capture 100%
@@ -34,16 +27,12 @@ export default class Server {
 
     // RequestHandler creates a separate execution context using domains, so that every
     // transaction/span/breadcrumb is attached to its own Hub instance
-    this.webserver.server.use(Sentry.Handlers.requestHandler())
+    this.server.use(Sentry.Handlers.requestHandler())
 
     // TracingHandler creates a trace for every incoming request
-    this.webserver.server.use(Sentry.Handlers.tracingHandler())
+    this.server.use(Sentry.Handlers.tracingHandler())
 
     // The error handler must be before any other error middleware and after all controllers
-    this.webserver.server.use(Sentry.Handlers.errorHandler())
-  }
-
-  start(port: number) {
-    this.webserver.start(port)
+    this.server.use(Sentry.Handlers.errorHandler())
   }
 }

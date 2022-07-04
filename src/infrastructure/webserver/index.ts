@@ -18,6 +18,11 @@ class Webserver {
     })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addPlugin(plugin: any) {
+    this.server.use(plugin)
+  }
+
   register(router: Router) {
     this.server.use('/', router)
   }
