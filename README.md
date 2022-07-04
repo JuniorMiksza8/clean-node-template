@@ -1,5 +1,5 @@
   # Description 
-    Clean Typescript API made with NodeJS and Express
+    Clean Typescript API made with NodeJS,Express and Prisma
  
   # Features
     - Tested with JEST
