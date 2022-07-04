@@ -13,7 +13,7 @@ const UserSchema = Joi.object({
   updatedAt: Joi.date(),
 })
 
-export class JoiValidateUser implements ValidateUser {
+export class JoiValidateUserDTO implements ValidateUser {
   validate(data: Partial<User>) {
     const res = UserSchema.validate(data)
 

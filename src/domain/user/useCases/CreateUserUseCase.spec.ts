@@ -2,7 +2,7 @@ import { prismaMock } from '../../../infrastructure/database/sql/singleton'
 import { CreateUserUseCase } from './CreateUserUseCase'
 import { PrismaUserRepository } from '../adapters/PrismaUserRepository'
 import { BcryptHashService } from '../../../adapters/BcryptHashService'
-import { JoiValidateUser } from '../adapters/JoiValidateUser'
+import { JoiValidateUserDTO } from '../adapters/JoiValidateUserDTO'
 import { CreateUserData } from '../ports/UserRepository'
 
 describe('test create user use case', () => {
@@ -27,7 +27,7 @@ describe('test create user use case', () => {
     const createUserUseCase = new CreateUserUseCase(
       new PrismaUserRepository(),
       new BcryptHashService(),
-      new JoiValidateUser()
+      new JoiValidateUserDTO()
     )
 
     const res = await createUserUseCase.handle(user)
@@ -47,7 +47,7 @@ describe('test create user use case', () => {
     const createUserUseCase = new CreateUserUseCase(
       new PrismaUserRepository(),
       new BcryptHashService(),
-      new JoiValidateUser()
+      new JoiValidateUserDTO()
     )
 
     expect(createUserUseCase.handle(user)).rejects.toThrow()

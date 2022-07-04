@@ -2,9 +2,7 @@ import { UserRepository } from '../ports/UserRepository'
 import { User } from '../User'
 
 export class FindUserUseCase {
-  userRepository: UserRepository
-
-  constructor(userRepository: UserRepository) {
+  constructor(private userRepository: UserRepository) {
     this.userRepository = userRepository
   }
 
