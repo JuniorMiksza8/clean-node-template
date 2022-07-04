@@ -1,0 +1,1 @@
+{"info":{"_postman_id":"756c3159-e631-400f-a3de-2a85b34431d2","name":"gerencianet","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},"item":[{"name":"New Request","id":"a80d4051-7b79-4434-b31c-bbbbbeda6746","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"method":"GET","header":[]},"response":[]}]}
