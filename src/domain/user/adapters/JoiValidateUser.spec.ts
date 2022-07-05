@@ -12,4 +12,16 @@ describe('test validate user function', () => {
 
     expect(joiValidateUserDTO.validate(user)).toHaveProperty('ok', true)
   })
+
+  it('should not validate invalid user', () => {
+    const joiValidateUserDTO = new JoiValidateUserDTO()
+
+    const user = {
+      name: 'tester',
+      email: 'tester',
+      password: '12312',
+    }
+
+    expect(joiValidateUserDTO.validate(user)).toHaveProperty('ok', false)
+  })
 })

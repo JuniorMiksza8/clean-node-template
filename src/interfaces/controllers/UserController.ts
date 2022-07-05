@@ -41,7 +41,7 @@ export class UserController {
 
       const user = await createUserUseCase.handle(data)
 
-      return res.status(200).json(user)
+      return res.status(201).json(user)
     } catch (error) {
       return res.status(error.httpCode || 500).json({ message: error.message })
     }
