@@ -4,7 +4,7 @@ import routes from './config/routes'
 
 export class Application {
   constructor() {
-    const { PORT, SENTRY_DSN = '' } = process.env
+    const { SERVER_PORT, SENTRY_DSN = '' } = process.env
 
     const server = new Webserver()
 
@@ -14,6 +14,6 @@ export class Application {
 
     sentryPlugin.init(SENTRY_DSN)
 
-    server.start(Number(PORT))
+    server.start(Number(SERVER_PORT))
   }
 }
