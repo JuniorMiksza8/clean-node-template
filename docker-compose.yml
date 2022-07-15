@@ -12,9 +12,7 @@ services:
 
   server:
     stdin_open: true
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: registroex.azurecr.io/example:latest
     container_name: server
     depends_on:
       - database
