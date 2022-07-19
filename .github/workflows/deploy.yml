@@ -48,6 +48,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_SERVER_PORT: ${{ secrets.SERVER_PORT }}
           file_name: .env
           fail_on_empty: false
 
