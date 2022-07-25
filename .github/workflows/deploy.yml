@@ -9,6 +9,19 @@ on:
       - master
 
 jobs:
+
+  create-envfile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          file_name: .env
+          fail_on_empty: false
+
   build:
     runs-on: ubuntu-latest
 
@@ -50,14 +63,6 @@ jobs:
           registry: https://registroex.azurecr.io/
           username: ${{ secrets.AzureAppService_ContainerUsername_369ceb9312c64f9ab6cd72a83a5470b5 }}
           password: ${{ secrets.AzureAppService_ContainerPassword_edfccb217c154fa39ea8d3a20ea03d0f }}
-
-      - name: create env
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          envkey_SERVER_PORT: ${{ secrets.SERVER_PORT }}
-          file_name: .env
-          fail_on_empty: false
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v2
