@@ -21,6 +21,7 @@ jobs:
           envkey_SERVER_PORT: ${{ secrets.SERVER_PORT }}
           file_name: .env
           fail_on_empty: false
+          directory: ./
 
   build:
     runs-on: ubuntu-latest
