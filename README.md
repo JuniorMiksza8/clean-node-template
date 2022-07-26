@@ -21,8 +21,8 @@
 
         run npm install or yarn on the root folder to install the required packages.
         run cp .env.example .env and fill in required environment variables
-        run npx prisma generate to generate prisma models
-        run npm run dev to serve the server on the choosen env { HTTP_SERVER_PORT }
+        run npx prisma migrate deploy to sync database
+        run npm run dev to serve the server on the choosen env { SERVER_PORT }
 
 
 #### Production
