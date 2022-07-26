@@ -1,4 +1,4 @@
-just testing
+[![Build and test Node application](https://github.com/JuniorMiksza8/clean-user-microsservice/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/JuniorMiksza8/clean-user-microsservice/actions/workflows/test.yml)
 
 # Description
 
