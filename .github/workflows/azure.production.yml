@@ -47,15 +47,15 @@ jobs:
       - name: Log in to registry
         uses: docker/login-action@v1
         with:
-          registry: https://registroex.azurecr.io/
-          username: ${{ secrets.AzureAppService_ContainerUsername_369ceb9312c64f9ab6cd72a83a5470b5 }}
-          password: ${{ secrets.AzureAppService_ContainerPassword_edfccb217c154fa39ea8d3a20ea03d0f }}
+          registry: ${{ secrets.registry }}
+          username: ${{ secrets.containerusername }}
+          password: ${{ secrets.containerpassword }}
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: registroex.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_369ceb9312c64f9ab6cd72a83a5470b5 }}/example:${{ github.sha }}
+          tags: ${{ secrets.registry }}/${{ secrets.containerusername }}/example:${{ github.sha }}
           file: ./Dockerfile
 
   deploy:
@@ -70,7 +70,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'aw-example'
+          app-name: ${{secrets.appname}}
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_6723f11cd3a9434d87887c0da2f2148d }}
-          images: 'registroex.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_369ceb9312c64f9ab6cd72a83a5470b5 }}/example:${{ github.sha }}'
+          publish-profile: ${{ secrets.publishprofile }}
+          images: '${{ secrets.registry }}/${{ secrets.containerusername }}/example:${{ github.sha }}'
