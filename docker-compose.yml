@@ -11,10 +11,12 @@ services:
       - 5432:5432
 
   server:
-    stdin_open: true
-    image: registroex.azurecr.io/example:latest
     container_name: server
+    restart: always
+    build: "."
     depends_on:
       - database
     ports:
-      - '${HTTP_SERVER_PORT}:${HTTP_SERVER_PORT}'
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    volumes:
+      - .:/var/www/app
