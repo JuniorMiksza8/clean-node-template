@@ -30,6 +30,13 @@ export class PrismaUserRepository implements UserRepository {
     })
   }
 
+  findOne(where?: Partial<User> | undefined, select?: UserSelect | undefined): Promise<User | null> {
+    return connection.user.findFirst({
+      where,
+      select: { ...defaultSelect, ...select },
+    }) as Promise<User | null>
+  }
+
   save(data: CreateUserData): Promise<Partial<User>> {
     return connection.user.create({ data, select: defaultSelect })
   }
