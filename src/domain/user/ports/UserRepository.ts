@@ -21,6 +21,7 @@ export interface CreateUserData {
 
 export class UserRepository {
   findByID: (id: string) => Promise<Partial<User> | null>
+  findOne: (where?: Partial<User>, select?: UserSelect) => Promise<User | null>
   find: (where?: Partial<User>, select?: UserSelect) => Promise<Partial<User>[]>
   save: (user: CreateUserData) => Promise<Partial<User>>
   exists: (data: Partial<User>) => Promise<boolean>
