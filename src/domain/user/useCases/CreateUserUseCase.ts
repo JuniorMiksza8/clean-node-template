@@ -5,14 +5,11 @@ import { ValidateUser } from '../ports/ValidateUser'
 import { User } from '../User'
 
 export class CreateUserUseCase {
-  userRepository: UserRepository
-  hashService: HashService
-  validateUser: ValidateUser
 
   constructor(
-    userRepository: UserRepository,
-    hashService: HashService,
-    validateUser: ValidateUser
+    private userRepository: UserRepository,
+    private hashService: HashService,
+    private validateUser: ValidateUser
   ) {
     this.userRepository = userRepository
     this.hashService = hashService

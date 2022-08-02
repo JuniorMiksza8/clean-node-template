@@ -5,4 +5,5 @@ interface HashResponse {
 
 export class HashService {
   hash: (data: string) => Promise<HashResponse>
+  compare: (hash: string, toCompareString: string) => Promise<boolean>
 }
